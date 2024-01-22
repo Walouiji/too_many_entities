@@ -1,12 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctbpnq38udfrm"]
+[gd_scene load_steps=7 format=3 uid="uid://ctbpnq38udfrm"]
 
 [ext_resource type="PackedScene" uid="uid://de77v5qx2q47g" path="res://Player/player.tscn" id="1_gxhhx"]
+[ext_resource type="Script" path="res://Scenes/spawner.gd" id="1_tb2fn"]
 [ext_resource type="PackedScene" uid="uid://cj01gbaphh0w7" path="res://Actors/ennemy_1.tscn" id="2_dloy0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prllq"]
+size = Vector2(40, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu3br"]
+size = Vector2(40, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5fq7"]
+size = Vector2(1072, 32)
+
 [node name="Arena" type="Node2D"]
+script = ExtResource("1_tb2fn")
+ennemy_entity = ExtResource("2_dloy0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(20, 324)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -20.0
+offset_top = -324.0
+offset_right = 20.0
+offset_bottom = 324.0
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="StaticBody2D/ColorRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 616.0
+offset_right = 1112.0
+offset_bottom = 648.0
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D/ColorRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 1112.0
+offset_bottom = 32.0
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/ColorRect"]
+layout_mode = 0
+offset_left = 1112.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1112, 0)
+shape = SubResource("RectangleShape2D_prllq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_iu3br")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(556, -308)
+shape = SubResource("RectangleShape2D_r5fq7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(556, 308)
+shape = SubResource("RectangleShape2D_r5fq7")
 
 [node name="Player" parent="." instance=ExtResource("1_gxhhx")]
-position = Vector2(144, 112)
+position = Vector2(584, 320)
 
-[node name="Ennemy1" parent="." instance=ExtResource("2_dloy0")]
-position = Vector2(912, 216)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(848, 160)
+
+[node name="Timer" type="Timer" parent="Marker2D"]
+
+[connection signal="timeout" from="Marker2D/Timer" to="." method="_on_timer_timeout"]
