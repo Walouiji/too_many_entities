@@ -1,9 +1,7 @@
 extends Node2D
 
 @export var ennemy_entity:PackedScene
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Marker2D/Timer.start()
+
 	
 func _process(_delta):
 	if get_tree().paused == true:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctbpnq38udfrm"]
+[gd_scene load_steps=8 format=3 uid="uid://ctbpnq38udfrm"]
 
 [ext_resource type="PackedScene" uid="uid://de77v5qx2q47g" path="res://Player/player.tscn" id="1_gxhhx"]
 [ext_resource type="Script" path="res://Scenes/spawner.gd" id="1_tb2fn"]
 [ext_resource type="PackedScene" uid="uid://cj01gbaphh0w7" path="res://Actors/ennemy_1.tscn" id="2_dloy0"]
+[ext_resource type="PackedScene" uid="uid://bolyb0iaxy0vp" path="res://Scenes/HUD.tscn" id="4_co16i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prllq"]
 size = Vector2(40, 648)
@@ -16,6 +17,9 @@ size = Vector2(1072, 32)
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_tb2fn")
 ennemy_entity = ExtResource("2_dloy0")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = 1
@@ -71,6 +75,7 @@ position = Vector2(584, 320)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(848, 160)
 
-[node name="Timer" type="Timer" parent="Marker2D"]
+[node name="Hud" parent="." node_paths=PackedStringArray("player_entity") instance=ExtResource("4_co16i")]
+player_entity = NodePath("../Player")
 
-[connection signal="timeout" from="Marker2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

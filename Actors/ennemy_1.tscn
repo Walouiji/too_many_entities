@@ -9,7 +9,7 @@ size = Vector2(32, 32)
 radius = 656.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmv7d"]
-size = Vector2(20, 32)
+size = Vector2(17, 32)
 
 [node name="Ennemy1" type="CharacterBody2D"]
 script = ExtResource("1_pq10g")
@@ -48,7 +48,7 @@ shape = SubResource("RectangleShape2D_vfjcu")
 [node name="Attack_area" type="Area2D" parent="."]
 
 [node name="attack_box" type="CollisionShape2D" parent="Attack_area"]
-position = Vector2(32, 0)
+position = Vector2(24, 0)
 shape = SubResource("RectangleShape2D_mmv7d")
 disabled = true
 

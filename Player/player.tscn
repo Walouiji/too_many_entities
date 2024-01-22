@@ -6,7 +6,7 @@
 radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vffiq"]
-size = Vector2(16, 32)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s0ta"]
 size = Vector2(32, 32)
@@ -35,7 +35,7 @@ shape = SubResource("CircleShape2D_qgemk")
 position = Vector2(24, 0)
 
 [node name="Hitbox" type="CollisionShape2D" parent="Hit_area"]
-position = Vector2(8, 0)
+position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_vffiq")
 disabled = true
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
