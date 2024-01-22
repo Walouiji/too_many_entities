@@ -10,8 +10,11 @@ func _physics_process(_delta):
 	look_at(get_global_mouse_position())
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * SPEED
-	
 	move_and_slide()
+	
+	if lp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/GameOverScreen.tscn")
+		
 	
 func _input(event):
 	if event.is_action_pressed("left_click"):
